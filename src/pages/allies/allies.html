@@ -1,0 +1,38 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Allies</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <button ion-item *ngFor="let ally of allies" (click)="itemSelected(ally)">
+      <h1>{{ ally.name }} </h1>
+      <ul>
+        <li> Rarity: {{ ally.rarity }} </li>
+        <li> Level: {{ ally.level }} </li>
+        <li> Weapon: {{ (ally.attribute).charAt(0).toUpperCase()+ally.attribute.slice(1) }}
+          {{ (ally.weapon).charAt(0).toUpperCase()+ally.weapon.slice(1) }} 
+        </li>
+      </ul>
+    </button>
+  </ion-list>
+
+<!-- <ion-list>
+  <ion-item>
+    <ion-label>Ally Attributes</ion-label>
+    <ion-select [(ngModel)]="attributes">
+      <ion-option value="red">Red Attribute</ion-option>
+      <ion-option value="blue">Blue Attribute</ion-option>
+      <ion-option value="green">Green Attribute</ion-option>
+      <ion-option value="gray">Gray Attribute</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list> -->
+
+</ion-content>
