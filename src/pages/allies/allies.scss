@@ -1,3 +1,22 @@
 page-allies {
 
 }
+
+div.icons {
+  height: 3em;
+  position: relative;
+}
+
+div.icons p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+//perhaps later center for mobile devices. need to think of web alternative
+// .label-md {
+//     margin-left: auto;
+//     margin-right: auto;
+//     width: 6em;
+// }

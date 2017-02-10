@@ -14,6 +14,8 @@ export class TabsPage {
   tab2Root: any = AlliesPage;
   tab3Root: any = TeamsPage;
 
+  //for easier devlopment switch the tabs(default is tab1Root)
+
   constructor() {
 
   }

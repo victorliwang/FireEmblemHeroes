@@ -25,7 +25,7 @@ export class AlliesPage {
     this.getAllies();
   }
 
-  itemSelected(ally: Ally) {
+  allySelected(ally: Ally) {
     console.log("clicked: " + ally.name);
   }
 

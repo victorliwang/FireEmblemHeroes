@@ -10,18 +10,28 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <button ion-item *ngFor="let ally of allies" (click)="itemSelected(ally)">
-      <h1>{{ ally.name }} </h1>
-      <ul>
-        <li> Rarity: {{ ally.rarity }} </li>
-        <li> Level: {{ ally.level }} </li>
-        <li> Weapon: {{ (ally.attribute).charAt(0).toUpperCase()+ally.attribute.slice(1) }}
-          {{ (ally.weapon).charAt(0).toUpperCase()+ally.weapon.slice(1) }} 
-        </li>
-      </ul>
-    </button>
-  </ion-list>
+<!-- perhaps detect screen with in the future and make a grid of allies?? -->
+<!-- <ion-grid>
+  <ion-row>
+    <ion-col width-100> -->
+      <ion-list>
+        <button ion-item *ngFor="let ally of allies" (click)="allySelected(ally)">
+          <ion-thumbnail item-left>
+            <img src="../assets/images/icon_portrait_{{ally.name}}.png">
+          </ion-thumbnail>
+          <h1>{{ ally.name }} </h1>
+            <p> <img src="../assets/images/icon_rarity_{{ally.rarity}}_stars.png"> </p>
+            <p> Level: {{ ally.level }} </p>
+
+            <div class=icons>
+              <p> <img src="../assets/images/icon_class_{{ally.attribute}}_{{ally.weapon}}.png">
+            <img src="../assets/images/icon_move_{{ally.movement}}.png"> </p>
+          </div>
+        </button>
+      </ion-list>
+    <!-- </ion-col>
+  </ion-row>
+</ion-grid> -->
 
 <!-- <ion-list>
   <ion-item>
