@@ -5,6 +5,7 @@ import { AlliesPage } from '../pages/allies/allies';
 import { TeamsPage } from '../pages/teams/teams';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AddAllyPage } from '../pages/add-ally/add-ally';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     AlliesPage,
     TeamsPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddAllyPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +26,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     AlliesPage,
     TeamsPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddAllyPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

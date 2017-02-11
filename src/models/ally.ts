@@ -4,7 +4,7 @@ export class Ally {
   level: number; //1-40
   attribute: string; //red, green, blue, neutral
   weapon: string; //sword, lance, tome, axes, beast, bow, staff, shuriken, etc...
-  movement: string; //armored, calvary, flying, infantry
+  movement: string; //armored, cavalry, flying, infantry
   //can make an array of types
   //red green blue gray
   //and their subtypes

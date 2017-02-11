@@ -22,13 +22,17 @@
           <h1>{{ ally.name }} </h1>
             <p> <img src="../assets/images/icon_rarity_{{ally.rarity}}_stars.png"> </p>
             <p> Level: {{ ally.level }} </p>
-
             <div class=icons>
               <p> <img src="../assets/images/icon_class_{{ally.attribute}}_{{ally.weapon}}.png">
             <img src="../assets/images/icon_move_{{ally.movement}}.png"> </p>
           </div>
         </button>
       </ion-list>
+
+      <ion-fab right bottom>
+        <button ion-fab (click)="addAllyPage()"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
+
     <!-- </ion-col>
   </ion-row>
 </ion-grid> -->
