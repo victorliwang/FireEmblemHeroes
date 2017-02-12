@@ -3,7 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AddAllyPage } from '../add-ally/add-ally';
 
 import { Ally } from '../../models/ally';
-import { ALLIES } from '../../app/allies-list';
+import { AllyService } from '../../providers/ally-service';
 // import { AlliesList, ALLIES } from '../../app/allies-list';
 
 @Component({
@@ -16,17 +16,24 @@ export class AlliesPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
+    public allyService: AllyService,
     public modalCtrl: ModalController,
     // private alliesList: AlliesList
   ) { }
 
+  // ionViewDidLoad(){
+  //
+  // }
+  //
   ngOnInit(): void {
     this.getAllies();
   }
 
   getAllies(): void {
-    // this.allies = this.alliesList.allies;
-    this.allies = ALLIES;
+    this.allyService.getAllies().then((data) => {
+      console.log(data);
+      this.allies = data;
+    })
   }
 
   allySelected(ally: Ally): void {
@@ -36,13 +43,30 @@ export class AlliesPage {
   addAllyPage(): void {
     console.log("addAllyPage() called in allies.ts");
     let addAllyModal = this.modalCtrl.create(AddAllyPage);
+
+    //test dummyList
+    addAllyModal.onDidDismiss(ally => {
+      if (ally) {
+        this.allies.push(ally);
+        this.allyService.createAlly(ally);
+      } else {
+        console.log("Nothing was added");
+      }
+    });
+
     addAllyModal.present();
-    // console.log("back in allies.ts");
   }
 
-  // ionViewWillEnter() {
-  //   console.log("ionViewWillEnter of allies.ts");
-  //   console.log('name', this.navParams);
-  // }
+  deleteAlly(ally) {
+    let index = this.allies.indexOf(ally);
+
+    if (index > -1) {
+      this.allies.splice(index, 1);
+    }
+
+    console.log(ally._id);
+
+    this.allyService.deleteAlly(ally._id);
+  }
 
 }

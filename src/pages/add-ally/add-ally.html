@@ -1,34 +1,37 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar transparent>
     <ion-title>Add an Ally!</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="cancel()">Cancel</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-
-    <ion-list-header>Tell us about your ally!</ion-list-header>
 
     <form [formGroup]="allyForm" (ngSubmit)="addAlly()">
+
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" formControlName="name"></ion-input>
+        <ion-input formControlName="name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Rarity</ion-label>
         <ion-select formControlName="rarity">
-          <ion-option value="twoStars">2 Stars</ion-option>
-          <ion-option value="threeStars">3 Stars</ion-option>
-          <ion-option value="fourStars">4 Stars</ion-option>
-          <ion-option value="fiveStars">5 Stars</ion-option>
+          <ion-option value="2">2 Stars</ion-option>
+          <ion-option value="3">3 Stars</ion-option>
+          <ion-option value="4">4 Stars</ion-option>
+          <ion-option value="5">5 Stars</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-label>Level</ion-label>
-        <ion-input type="number" formControlName="level"></ion-input>
+        <ion-range min="1" max="40" pin="true" formControlName="level">
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>40</ion-label>
+        </ion-range>
       </ion-item>
 
       <ion-item>
@@ -65,12 +68,10 @@
         </ion-select>
       </ion-item>
 
+
       <div padding>
-        <!-- for testing -->
         <!-- <button ion-button full type="submit">Add Ally</button> -->
         <button ion-button full type="submit" [disabled]="allyForm.status=='INVALID'">Add Ally</button>
       </div>
     </form>
-
-  </ion-list>
 </ion-content>

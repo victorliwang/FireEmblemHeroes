@@ -1,4 +1,3 @@
-
 <ion-header>
 
   <ion-navbar>
@@ -7,37 +6,56 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
-<!-- perhaps detect screen with in the future and make a grid of allies?? -->
-<!-- <ion-grid>
+  <!-- perhaps detect screen with in the future and make a grid of allies?? -->
+  <!-- <ion-grid>
   <ion-row>
     <ion-col width-100> -->
-      <ion-list>
-        <button ion-item *ngFor="let ally of allies" (click)="allySelected(ally)">
-          <ion-thumbnail item-left>
-            <img src="../assets/images/icon_portrait_{{ally.name}}.png">
-          </ion-thumbnail>
-          <h1>{{ ally.name }} </h1>
-            <p> <img src="../assets/images/icon_rarity_{{ally.rarity}}_stars.png"> </p>
-            <p> Level: {{ ally.level }} </p>
-            <div class=icons>
-              <p> <img src="../assets/images/icon_class_{{ally.attribute}}_{{ally.weapon}}.png">
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let ally of allies" (click)="allySelected(ally)" tappable>
+      <ion-item>
+
+    <!-- <button ion-item *ngFor="let ally of allies" (click)="allySelected(ally)"> -->
+        <ion-thumbnail item-left>
+          <img src="../assets/images/icon_portrait_{{ally.name}}.png">
+        </ion-thumbnail>
+        <h1>{{ ally.name }} </h1>
+        <p> <img src="../assets/images/icon_rarity_{{ally.rarity}}_stars.png"> </p>
+        <p> Level: {{ ally.level }} </p>
+        <div class=icons>
+          <p> <img src="../assets/images/icon_class_{{ally.attribute}}_{{ally.weapon}}.png">
             <img src="../assets/images/icon_move_{{ally.movement}}.png"> </p>
-          </div>
-        </button>
-      </ion-list>
+        </div>
 
-      <ion-fab right bottom>
-        <button ion-fab (click)="addAllyPage()"><ion-icon name="add"></ion-icon></button>
-      </ion-fab>
+    </ion-item>
+          <!-- </button> -->
 
-    <!-- </ion-col>
+    <ion-item-options>
+      <button ion-button color="danger" (click)="deleteAlly(ally)">
+                  <ion-icon name="trash"></ion-icon>
+                  Delete Ally
+                </button>
+    </ion-item-options>
+
+    </ion-item-sliding>
+
+
+
+
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="addAllyPage()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <!-- </ion-col>
   </ion-row>
 </ion-grid> -->
 
-<!-- <ion-list>
+  <!-- <ion-list>
   <ion-item>
     <ion-label>Ally Attributes</ion-label>
     <ion-select [(ngModel)]="attributes">

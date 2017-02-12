@@ -6,6 +6,7 @@ import { TeamsPage } from '../pages/teams/teams';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddAllyPage } from '../pages/add-ally/add-ally';
+import { AllyService } from '../providers/ally-service';
 
 
 @NgModule({
@@ -29,6 +30,6 @@ import { AddAllyPage } from '../pages/add-ally/add-ally';
     TabsPage,
     AddAllyPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AllyService]
 })
 export class AppModule {}

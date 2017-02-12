@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { AlliesPage } from '../allies/allies';
 import { TeamsPage } from '../teams/teams';
 
+
 @Component({
   templateUrl: 'tabs.html'
 })
