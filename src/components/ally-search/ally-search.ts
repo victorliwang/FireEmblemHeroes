@@ -11,12 +11,8 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { FormControl } from '@angular/forms';
-
-
 import { NavController } from 'ionic-angular';
 
-import { ALLIES } from '../../app/ally-list';
 import { Ally } from '../../models/ally';
 
 import { AllySearchService } from '../../providers/ally-search-service'

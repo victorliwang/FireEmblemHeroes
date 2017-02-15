@@ -12,9 +12,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-
 import { Ally } from '../../models/ally';
-import { ALLIES }  from '../../app/ally-list';
 
 import { AllySearchService } from '../../providers/ally-search-service'
 
