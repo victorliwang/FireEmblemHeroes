@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Ally } from '../models/ally';
+
 @Injectable()
 export class AllyService {
 
-  data: any;
-
+  // data: any;
+  data: Ally[];
+  private alliesUrl = "http://localhost:8080/api/allies";
   constructor(public http: Http) {
     this.data = null;
   }
@@ -18,10 +21,10 @@ export class AllyService {
     }
 
     return new Promise(resolve => {
-      this.http.get('http://localhost:8080/api/allies')
+      this.http.get(this.alliesUrl)
         .map(res => res.json())
         .subscribe(data => {
-          this.data = data;
+          this.data = data as Ally[];
           resolve(this.data);
         });
     });
@@ -33,7 +36,7 @@ export class AllyService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:8080/api/allies', JSON.stringify(ally), { headers: headers })
+    this.http.post(this.alliesUrl, JSON.stringify(ally), { headers: headers })
       .subscribe(res => {
         console.log(res.json());
       });
@@ -41,8 +44,7 @@ export class AllyService {
   }
 
   deleteAlly(id) {
-
-    this.http.delete('http://localhost:8080/api/allies/' + id).subscribe((res) => {
+    this.http.delete(this.alliesUrl+ '/' + id).subscribe((res) => {
       console.log(res.json());
     });
 

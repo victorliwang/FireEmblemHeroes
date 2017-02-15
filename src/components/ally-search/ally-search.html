@@ -1,0 +1,24 @@
+<h4>Ally Search</h4>
+
+<ion-item>
+
+  <ion-input *ngIf="!selectedAlly" placeholder="Ally Name" #searchBox (keyup)="search(searchBox.value)"></ion-input>
+
+  <ion-thumbnail item-left *ngIf="selectedAlly">
+    <img src="../../assets/images/icon_portrait_{{selectedAlly.name}}.png">
+    <ion-input #searchBox (keyup)="search(searchBox.value)" [value]="selectedAlly.name"></ion-input>
+  </ion-thumbnail>
+
+</ion-item>
+
+<ion-list>
+  <ion-item *ngFor="let ally of allies | async" (click)="selectAlly(ally)" tappable>
+    <ion-avatar item-left>
+      <img src="../../assets/images/icon_portrait_{{ally.name}}.png"> {{ ally.name }}
+    </ion-avatar>
+  </ion-item>
+</ion-list>
+
+
+<p *ngIf="selectedAlly"> You selected: {{selectedAlly.name}} </p>
+<p> {{(allies|async)?.length}}</p>

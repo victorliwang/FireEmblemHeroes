@@ -56,7 +56,7 @@ app.get('/api/allies', function(req, res) {
     });
 });
 
-// create review and send back all reviews after creation
+// create ally and send back all allies after creation
 app.post('/api/allies', function(req, res) {
 
     console.log("creating ally");

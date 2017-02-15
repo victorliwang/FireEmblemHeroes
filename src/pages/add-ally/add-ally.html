@@ -10,68 +10,55 @@
 
 <ion-content padding>
 
-    <form [formGroup]="allyForm" (ngSubmit)="addAlly()">
+  <form [formGroup]="allyForm" (ngSubmit)="addAlly()">
 
-      <ion-item>
+    <!-- <ion-item>
         <ion-label>Name</ion-label>
         <ion-input formControlName="name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Rarity</ion-label>
-        <ion-select formControlName="rarity">
-          <ion-option value="2">2 Stars</ion-option>
-          <ion-option value="3">3 Stars</ion-option>
-          <ion-option value="4">4 Stars</ion-option>
-          <ion-option value="5">5 Stars</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-range min="1" max="40" pin="true" formControlName="level">
-          <ion-label range-left>1</ion-label>
-          <ion-label range-right>40</ion-label>
-        </ion-range>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Attribute</ion-label>
-        <ion-select formControlName="attribute">
-          <ion-option value="red">Red</ion-option>
-          <ion-option value="blue">Blue</ion-option>
-          <ion-option value="green">Green</ion-option>
-          <ion-option value="neutral">Neutral</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Weapon</ion-label>
-        <ion-select formControlName="weapon">
-          <ion-option value="sword">Sword</ion-option>
-          <ion-option value="lance">Lance</ion-option>
-          <ion-option value="axe">Axe</ion-option>
-          <ion-option value="bow">Bow</ion-option>
-          <ion-option value="dagger">Dagger</ion-option>
-          <ion-option value="beast">Beast</ion-option>
-          <ion-option value="tome">Tome</ion-option>
-          <ion-option value="staff">Staff</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Move Type</ion-label>
-        <ion-select formControlName="movement">
-          <ion-option value="infantry">Infantry</ion-option>
-          <ion-option value="armored">Armored</ion-option>
-          <ion-option value="cavalry">Cavalry</ion-option>
-          <ion-option value="flying">Flying</ion-option>
-        </ion-select>
-      </ion-item>
+      </ion-item> -->
 
 
-      <div padding>
-        <!-- <button ion-button full type="submit">Add Ally</button> -->
-        <button ion-button full type="submit" [disabled]="allyForm.status=='INVALID'">Add Ally</button>
+    <ion-item>
+      <ion-thumbnail item-left *ngIf="selectedAlly">
+        <img src="../../assets/images/icon_portrait_{{selectedAlly.name}}.png">
+        </ion-thumbnail>
+      <ion-input placeholder="Ally Name" #searchBox (keyup)="search(searchBox.value)" [value]="selectedAlly?.name" formControlName="ally"></ion-input>
+      <!-- <ion-thumbnail item-left *ngIf="selectedAlly">
+        <img src="../../assets/images/icon_portrait_{{selectedAlly.name}}.png">
+        <ion-input readonly="true" value={{selectedAlly.name}} formControlName="ally"></ion-input>
+      </ion-thumbnail> -->
+    </ion-item>
+
+    <ion-list>
+      <div *ngFor="let ally of allies | async" (click)="selectAlly(ally)" tappable>
+        <ion-item *ngIf="selectedAlly?.name!=ally.name">
+          <ion-avatar item-left>
+            <img src="../../assets/images/icon_portrait_{{ally.name}}.png"> {{ ally.name }}
+          </ion-avatar>
+        </ion-item>
       </div>
-    </form>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Rarity</ion-label>
+      <ion-range min="2" max="5" pin="true" steps="1" snaps="true" formControlName="rarity">
+        <ion-label range-left>2
+          <ion-icon small name="star"></ion-icon>
+        </ion-label>
+        <ion-label range-right>5
+          <ion-icon small name="star"></ion-icon>
+        </ion-label>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Level</ion-label>
+      <ion-input type="number" formControlName="level" min="1" max="40"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <!-- <button ion-button full type="submit">Add Ally</button> -->
+      <button ion-button full type="submit" [disabled]="allyForm.status=='INVALID'">Add Ally</button>
+    </div>
+  </form>
 </ion-content>

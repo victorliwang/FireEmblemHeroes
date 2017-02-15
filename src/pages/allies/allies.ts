@@ -18,20 +18,14 @@ export class AlliesPage {
     public navParams: NavParams,
     public allyService: AllyService,
     public modalCtrl: ModalController,
-    // private alliesList: AlliesList
   ) { }
 
-  // ionViewDidLoad(){
-  //
-  // }
-  //
   ngOnInit(): void {
     this.getAllies();
   }
 
   getAllies(): void {
     this.allyService.getAllies().then((data) => {
-      console.log(data);
       this.allies = data;
     })
   }
@@ -41,16 +35,12 @@ export class AlliesPage {
   }
 
   addAllyPage(): void {
-    console.log("addAllyPage() called in allies.ts");
     let addAllyModal = this.modalCtrl.create(AddAllyPage);
 
-    //test dummyList
     addAllyModal.onDidDismiss(ally => {
       if (ally) {
         this.allies.push(ally);
         this.allyService.createAlly(ally);
-      } else {
-        console.log("Nothing was added");
       }
     });
 
@@ -59,13 +49,9 @@ export class AlliesPage {
 
   deleteAlly(ally) {
     let index = this.allies.indexOf(ally);
-
     if (index > -1) {
       this.allies.splice(index, 1);
     }
-
-    console.log(ally._id);
-
     this.allyService.deleteAlly(ally._id);
   }
 
