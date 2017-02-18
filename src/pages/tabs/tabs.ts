@@ -13,7 +13,7 @@ export class TabsPage {
   // should be each tab's root Page
   tab1Root: any = HomePage;
   tab2Root: any = AlliesPage;
-  tab3Root: any = TeamsPage;
+  // tab3Root: any = TeamsPage;
 
   //for easier devlopment switch the tabs(default is tab1Root)
 
